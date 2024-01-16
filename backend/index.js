@@ -12,6 +12,7 @@ import userRoute from "./routes/user.router.js";
 import reviewRoute from "./routes/review.router.js";
 import plumberRoute from "./routes/plumber.router.js";
 import PlumberSchema from "./models/PlumberSchema.js";
+
 //app config
 const port = process.env.PORT || 9090;
 const app = express();
@@ -47,6 +48,8 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use("/", express.static("../frontend/build/"));
+
 app.get("/", (req, res) => res.send("Ok"));
 
 app.use("/api/auth", authRoute);
@@ -62,6 +65,10 @@ app.use((err, req, res, next) => {
     statusCode,
     message,
   });
+});
+
+app.all("*", function (req, res) {
+  res.sendFile("../frontend" + "/build/index.html");
 });
 
 app.listen(port, () => {

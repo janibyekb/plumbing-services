@@ -10,4 +10,7 @@ export default defineConfig({
       "/api": "http://localhost:9090",
     },
   },
+  build: {
+    outDir: "build",
+  },
 });
