@@ -1,7 +1,9 @@
 import express from "express";
 
 import cookieParser from "cookie-parser";
-import cors from "cors";
+import { fileURLToPath } from "url";
+import path from "path";
+import { basename } from "path";
 import mongoose from "mongoose";
 
 import dotenv from "dotenv";
@@ -16,6 +18,9 @@ import PlumberSchema from "./models/PlumberSchema.js";
 //app config
 const port = process.env.PORT || 9090;
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const corsOptions = {
   origin: true,
@@ -48,7 +53,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use("/", express.static("../frontend/build/"));
+app.use("/", express.static(path.join(__dirname, "../frontend/build/")));
 
 app.get("/", (req, res) => res.send("Ok"));
 
@@ -68,7 +73,7 @@ app.use((err, req, res, next) => {
 });
 
 app.all("*", function (req, res) {
-  res.sendFile("../frontend" + "/build/index.html");
+  res.sendFile(__dirname + "../frontend/build/index.html");
 });
 
 app.listen(port, () => {
