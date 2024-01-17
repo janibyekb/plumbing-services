@@ -52,7 +52,7 @@ app.use(function (req, res, next) {
   );
   next();
 });
-
+console.log(__dirname);
 app.use("/", express.static(path.join(__dirname, "../frontend/build/")));
 
 app.get("/", (req, res) => res.send("Ok"));
@@ -73,7 +73,7 @@ app.use((err, req, res, next) => {
 });
 
 app.all("*", function (req, res) {
-  res.sendFile(__dirname + "../frontend/build/index.html");
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
 
 app.listen(port, () => {
