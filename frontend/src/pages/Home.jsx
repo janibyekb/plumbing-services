@@ -93,8 +93,8 @@ export default function Home() {
                       Select a service
                     </h2>
                     <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                      World-class care for everyone. Our health System officers
-                      unmatched, expert health care.
+                      World-class service for everyone. Our experts offer
+                      unmatched quality service that you can count on
                     </p>
 
                     <Link
@@ -115,8 +115,8 @@ export default function Home() {
                       Find a plumber
                     </h2>
                     <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
-                      World-class care for everyone. Our health System officers
-                      unmatched, expert health care.
+                      World-class service for everyone. Our experts offer
+                      unmatched quality service that you can count on
                     </p>
 
                     <Link
