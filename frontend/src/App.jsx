@@ -14,6 +14,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import ProfileLayout from "./pages/Dashboard/ProfileLayout";
 import ServiceList from "./pages/Services/ServiceList";
 import PageMissing from "./components/PageMissing";
+import AppointmentList from "./pages/Dashboard/PlumberAccount/Appointments/AppointmentList";
+import ProfileSettings from "./pages/Dashboard/PlumberAccount/Settings/ProfileSettings";
 
 function App() {
   return (
@@ -33,7 +35,10 @@ function App() {
           <Route path="/services" element={<ServiceList />} />
           <Route path="/contact" element={<Contact />} />
           <Route element={<PrivateRoute allowedRoles={["user", "plumber"]} />}>
-            <Route path="/profile" element={<ProfileLayout />} />
+            <Route path="/profile" element={<ProfileLayout />}>
+              <Route path="" element={<AppointmentList />} />
+              <Route path="settings" element={<ProfileSettings />} />
+            </Route>
           </Route>
           <Route path="*" element={<PageMissing />} />
         </Routes>

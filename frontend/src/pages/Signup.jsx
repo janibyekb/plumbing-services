@@ -139,7 +139,7 @@ export default function Signup() {
                     className="text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none"
                   >
                     <option value="user"> Regular User</option>
-                    <option value="plumber"> Plumber</option>
+                    <option value="vendor"> Plumber</option>
                   </select>
                 </label>
                 <label
@@ -160,7 +160,7 @@ export default function Signup() {
                 </label>
               </div>
 
-              <div className="mb-5 flex items-center gap-3">
+              {/* <div className="mb-5 flex items-center gap-3">
                 {selectedFile && (
                   <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center">
                     <img
@@ -189,7 +189,7 @@ export default function Signup() {
                     Upload Photo
                   </label>
                 </div>
-              </div>
+              </div> */}
 
               <div className="mt-7">
                 <button

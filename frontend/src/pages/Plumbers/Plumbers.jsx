@@ -2,7 +2,7 @@ import PlumberCard from "../../components/Plumbers/PlumberCard";
 import { useBackendGet } from "../../lib/hooks";
 
 export default function Plumbers() {
-  const [plumbers, fetchPlumbers] = useBackendGet("plumbers", []);
+  const [plumbers, fetchPlumbers] = useBackendGet("vendors", []);
   console.log(plumbers);
   return (
     <>
