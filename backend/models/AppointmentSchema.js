@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const bookingSchema = new mongoose.Schema(
+const appointmentSchema = new mongoose.Schema(
   {
-    doctor: {
+    vendor: {
       type: mongoose.Types.ObjectId,
       ref: "Doctor",
       required: true,
@@ -12,8 +12,8 @@ const bookingSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    ticketPrice: { type: String, required: true },
-    appointmentDate: {
+    jobPrice: { type: String, required: true },
+    date: {
       type: Date,
       required: true,
     },
@@ -26,8 +26,21 @@ const bookingSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    duration: {
+      type: Number,
+      default: 1,
+    },
+    location: {
+      type: String,
+    },
+    imgUrls: {
+      type: Array,
+    },
+    description: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Booking", bookingSchema);
+export default mongoose.model("Appointment", appointmentSchema);

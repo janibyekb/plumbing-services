@@ -1,11 +1,11 @@
-import Plumber from "../models/PlumberSchema.js";
+import Vendor from "../models/VendorSchema.js";
 
-export const getAllPlumbers = async (req, res, next) => {
+export const getAllVendors = async (req, res, next) => {
   try {
     const { query } = req.query;
-    let plumbers;
+    let vendors;
     if (query) {
-      plumbers = await Plumber.find({
+      vendors = await Vendor.find({
         // isApproved: "approved",
         $or: [
           { name: { $regex: query, $options: "i" } },
@@ -13,35 +13,36 @@ export const getAllPlumbers = async (req, res, next) => {
         ],
       }).select("-password");
     } else {
-      //   plumbers = await Plumber.find({ isApproved: "approved" }).select(
+      //   vendors = await Vendor.find({ isApproved: "approved" }).select(
       //     "-password"
       //   );
-      plumbers = await Plumber.find({}).select("-password");
+
+      vendors = await Vendor.find({}).select("-password");
     }
 
-    res.status(200).json(plumbers);
+    res.status(200).json(vendors);
   } catch (error) {
     res.status(404).json({ success: false, message: "No user found!" });
   }
 };
-export const getSinglePlumber = async (req, res, next) => {
+export const getSingleVendor = async (req, res, next) => {
   //   if (req.user.id !== req.params.id)
   //     return next(errorHandler(401, "You can only delete your own account!"));
   try {
-    const plumber = await Plumber.findById(req.params.id)
+    const vendor = await Vendor.findById(req.params.id)
       .populate("reviews")
       .select("-password");
 
     // const { password, ...rest } = user._doc;
 
-    res.status(200).json(plumber);
+    res.status(200).json(vendor);
   } catch (error) {
     console.log(err);
     res.status(404).json({ success: false, message: "No user found!" });
   }
 };
 
-export const updatePlumber = async (req, res, next) => {
+export const updateVendor = async (req, res, next) => {
   //   if (req.user.id !== req.params.id)
   //     return next(errorHandler(401, "You can only update your own account!"));
   console.log(req.body);
@@ -50,7 +51,7 @@ export const updatePlumber = async (req, res, next) => {
       req.body.password = bcryptjs.hashSync(req.body.password, 10);
     }
 
-    const updatedPlumber = await Plumber.findByIdAndUpdate(
+    const updatedVendor = await Vendor.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
@@ -58,7 +59,7 @@ export const updatePlumber = async (req, res, next) => {
       { new: true }
     );
 
-    const { password, ...rest } = updatedPlumber._doc;
+    const { password, ...rest } = updatedVendor._doc;
 
     res.status(200).json(rest);
   } catch (error) {
@@ -66,13 +67,13 @@ export const updatePlumber = async (req, res, next) => {
   }
 };
 
-export const deletePlumber = async (req, res, next) => {
+export const deleteVendor = async (req, res, next) => {
   if (req.user.id !== req.params.id)
     return next(errorHandler(401, "You can only delete your own account!"));
   try {
-    await Plumber.findByIdAndDelete(req.params.id);
+    await Vendor.findByIdAndDelete(req.params.id);
     res.clearCookie("access_token");
-    res.status(200).json("Plumber has been deleted!");
+    res.status(200).json("Vendor has been deleted!");
   } catch (error) {
     next(error);
   }

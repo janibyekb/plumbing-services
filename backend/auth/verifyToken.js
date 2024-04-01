@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 
 import User from "../models/UserSchema.js";
 import { errorHandler } from "../utils/error.js";
+import VendorSchema from "../models/VendorSchema.js";
 
 export const authenticate = async (req, res, next) => {
   const authToken = req.headers.authorization;
@@ -27,13 +28,14 @@ export const restrict = (roles) => async (req, res, next) => {
 
   let user;
   const client = await User.findById(userId);
-  const plumber = await User.findById(userId);
+  const plumber = await VendorSchema.findById(userId);
   if (client) {
     user = client;
   }
   if (plumber) {
     user = plumber;
   }
+  console.log(user);
 
   if (!roles.includes(user.role)) {
     return res.status(401).json({ message: "You are not authorized!" });

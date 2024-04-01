@@ -12,8 +12,7 @@ dotenv.config();
 import authRoute from "./routes/auth.router.js";
 import userRoute from "./routes/user.router.js";
 import reviewRoute from "./routes/review.router.js";
-import plumberRoute from "./routes/plumber.router.js";
-import PlumberSchema from "./models/PlumberSchema.js";
+import vendorRoute from "./routes/vendor.router.js";
 
 //app config
 const port = process.env.PORT || 9090;
@@ -59,7 +58,7 @@ app.get("/", (req, res) => res.send("Ok"));
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-app.use("/api/plumbers", plumberRoute);
+app.use("/api/vendors", vendorRoute);
 app.use("/api/reviews", reviewRoute);
 
 app.use((err, req, res, next) => {

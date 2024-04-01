@@ -4,14 +4,14 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
-  phone: { type: Number },
-  photo: { type: String },
+  phoneNumber: { type: Number },
+  profileImgUrl: { type: String },
   role: {
     type: String,
-    enum: ["user", "admin"],
+    enum: ["user", "vendor"],
     default: "user",
   },
-  gender: { type: String, enum: ["male", "female", "other"] },
+  gender: { type: String, enum: ["male", "female"] },
   bloodType: { type: String },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
 });

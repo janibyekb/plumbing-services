@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import Plumber from "./PlumberSchema.js";
+import Vendor from "./VendorSchema.js";
 
 const reviewSchema = new mongoose.Schema(
   {
-    plumber: {
+    vendor: {
       type: mongoose.Types.ObjectId,
-      ref: "Plumber",
+      ref: "Vendor",
     },
     user: {
       type: mongoose.Types.ObjectId,
@@ -35,10 +35,10 @@ reviewSchema.pre(/^find/, function (next) {
   next();
 });
 
-reviewSchema.statics.calcAverageRatings = async function (plumberId) {
+reviewSchema.statics.calcAverageRatings = async function (vendorId) {
   const stats = await this.aggregate([
     {
-      $match: { plumber: plumberId },
+      $match: { vendor: vendorId },
     },
     {
       $group: {
@@ -49,14 +49,14 @@ reviewSchema.statics.calcAverageRatings = async function (plumberId) {
     },
   ]);
 
-  await Plumber.findByIdAndUpdate(plumberId, {
+  await Vendor.findByIdAndUpdate(vendorId, {
     totalRating: stats[0].numOfRating,
     averageRating: stats[0].avgRating,
   });
 };
 
 reviewSchema.post("save", function () {
-  this.constructor.calcAverageRatings(this.plumber);
+  this.constructor.calcAverageRatings(this.vendor);
 });
 
 export default mongoose.model("Review", reviewSchema);

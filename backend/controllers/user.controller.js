@@ -1,7 +1,7 @@
 import User from "../models/UserSchema.js";
-import Booking from "../models/BookingSchema.js";
+import Appointment from "../models/AppointmentSchema.js";
 import { errorHandler } from "../utils/error.js";
-import PlumberSchema from "../models/PlumberSchema.js";
+import VendorSchema from "../models/VendorSchema.js";
 
 export const getAllUsers = async (req, res, next) => {
   try {
@@ -63,17 +63,17 @@ export const deleteUser = async (req, res, next) => {
   }
 };
 
-export const getBookings = async (req, res, next) => {
+export const getAppointments = async (req, res, next) => {
   try {
-    const bookings = await Booking.find({ user: req.params.id });
+    const appointments = await Appointment.find({ user: req.params.id });
 
-    const plumberIds = bookings.map((el) => el.plumber.id);
+    const vendorIds = appointments.map((el) => el.vendor.id);
 
-    const plumbers = await PlumberSchema.find({
-      _id: { $in: plumberIds },
+    const vendors = await VendorSchema.find({
+      _id: { $in: vendorIds },
     }).select("-password");
 
-    res.status(200).json({ data: plumbers });
+    res.status(200).json({ data: vendors });
   } catch (error) {
     next(error);
   }

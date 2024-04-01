@@ -1,14 +1,16 @@
 import mongoose from "mongoose";
 
-const PlumberSchema = new mongoose.Schema({
+const VendorSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   name: { type: String, required: true },
-  phone: { type: Number },
-  photo: { type: String },
+  phoneNumber: { type: Number },
+  profileImageUrl: { type: String },
   serviceFee: { type: Number },
   role: {
     type: String,
+    enum: ["user", "vendor"],
+    default: "user",
   },
 
   specialization: { type: String },
@@ -16,9 +18,6 @@ const PlumberSchema = new mongoose.Schema({
     type: Array,
   },
 
-  experiences: {
-    type: Array,
-  },
   address: {
     type: String,
   },
@@ -31,6 +30,7 @@ const PlumberSchema = new mongoose.Schema({
   about: { type: String },
   timeSlots: { type: Array },
   reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
+  gender: { type: String, enum: ["male", "female"] },
   averageRating: {
     type: Number,
     default: 0,
@@ -47,4 +47,4 @@ const PlumberSchema = new mongoose.Schema({
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
 });
 
-export default mongoose.model("Plumber", PlumberSchema);
+export default mongoose.model("Vendor", VendorSchema);

@@ -2,19 +2,19 @@ import User from "../models/UserSchema.js";
 import bcrypt from "bcryptjs";
 
 import jwt from "jsonwebtoken";
-import Plumber from "../models/PlumberSchema.js";
+import Vendor from "../models/VendorSchema.js";
 import { errorHandler } from "../utils/error.js";
 
 export const register = async (req, res) => {
   const { name, email, password, role, photo, gender } = req.body;
-
+  console.log(req.body);
   try {
     let user = null;
 
     if (role === "client") {
       user = await User.findOne({ email });
     } else if (role === "plumber") {
-      user = await Plumber.findOne({ email });
+      user = await Vendor.findOne({ email });
     }
 
     if (user) return res.status(400).send({ message: "user already exist" });
@@ -22,7 +22,7 @@ export const register = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    if (role === "user") {
+    if (role == "user") {
       user = new User({
         name,
         email,
@@ -32,14 +32,15 @@ export const register = async (req, res) => {
         role,
       });
     }
-    if (role === "plumber") {
-      user = new Plumber({
+    if (role == "vendor") {
+      user = new Vendor({
         name,
         email,
         password: hashedPassword,
         photo,
         gender,
         role,
+        specialization: "Plumber",
       });
     }
 
@@ -56,12 +57,14 @@ export async function login(req, res, next) {
   try {
     let validUser = null;
     const user = await User.findOne({ email });
-    const plumber = await Plumber.findOne({ email });
+    const plumber = await Vendor.findOne({ email });
 
     if (user) {
       validUser = user;
     }
     if (plumber) validUser = plumber;
+
+    console.log(validUser);
 
     if (!validUser) return next(errorHandler(404, "User not found!"));
     const validPassword = bcrypt.compare(password, validUser.password);

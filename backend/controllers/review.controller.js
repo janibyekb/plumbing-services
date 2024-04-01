@@ -1,5 +1,5 @@
 import Review from "../models/ReviewSchema.js";
-import Plumber from "../models/PlumberSchema.js";
+import Plumber from "../models/VendorSchema.js";
 
 export const getAllReviews = async (req, res) => {
   try {
