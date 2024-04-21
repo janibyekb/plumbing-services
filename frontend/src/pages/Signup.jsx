@@ -4,7 +4,7 @@ import signUpImg from "../assets/images/signup.gif";
 
 import { Link, useNavigate } from "react-router-dom";
 import { uploadImageToCloudinary } from "../lib/uploadCloudinary";
-import { BACKEND_PATH } from "../lib/utils";
+import { BACKEND_PATH, convertToBase64 } from "../lib/utils";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
 import axios from "axios";
@@ -17,7 +17,7 @@ export default function Signup() {
     name: "",
     email: "",
     password: "",
-    photo: "",
+    profileImgUrl: "",
     gender: "",
     role: "user",
   });
@@ -36,27 +36,18 @@ export default function Signup() {
 
     setPreviewURL(data.url);
     setSelectedFile(data.url);
-    setFormData({ ...formData, photo: data.url });
+    setFormData({ ...formData, profileImgUrl: data.url });
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      // let res;
-      // if (!formData.photo) {
-      //   const file = new File([defaultImg], "default.png", {
-      //     type: "image/png",
-      //   });
-      //   console.log(file);
-
-      //   if (file) {
-      //     res = await uploadImageToCloudinary(file);
-      //     console.log(res);
-
-      //     setFormData({ ...formData, photo: res.url });
-      //   }
-      // }
+      let res;
+      if (!formData.profileImgUrl) {
+        const base64 = await convertToBase64(defaultImg);
+        setFormData({ ...formData, profileImgUrl: base64 });
+      }
 
       let { data } = await axios.post(`${BACKEND_PATH}auth/register`, formData);
 

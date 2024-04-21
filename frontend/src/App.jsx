@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 import Home from "./pages/Home";
 import Plumbers from "./pages/Plumbers/Plumbers";
@@ -16,6 +16,7 @@ import ServiceList from "./pages/Services/ServiceList";
 import PageMissing from "./components/PageMissing";
 import AppointmentList from "./pages/Dashboard/PlumberAccount/Appointments/AppointmentList";
 import ProfileSettings from "./pages/Dashboard/PlumberAccount/Settings/ProfileSettings";
+import RequestOfferPage from "#pages/Dashboard/PlumberAccount/RequestOffer/RequestOfferPage.jsx";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
               <Route path="" element={<AppointmentList />} />
               <Route path="settings" element={<ProfileSettings />} />
             </Route>
+            <Route path="/booking/:vendorId" element={<RequestOfferPage />} />
           </Route>
           <Route path="*" element={<PageMissing />} />
         </Routes>

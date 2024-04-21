@@ -10,6 +10,11 @@ body {
   font-family: "Manrope", sans-serif;
 }
 
+.onboarding-flow-children {
+  height: 350px;
+  overflow-y: auto;
+}
+
 .sticky__header {
   width: 100%;
   height: 80px;

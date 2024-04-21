@@ -8,7 +8,7 @@ import {
   deleteUserFailure,
   deleteUserSuccess,
   signOutUserStart,
-} from "../../redux/user/userSlice";
+} from "../redux/user/userSlice";
 import { BsGear, BsGearFill } from "react-icons/bs";
 import { current } from "@reduxjs/toolkit";
 
@@ -115,7 +115,7 @@ export default function Header() {
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="h-8 w-8 rounded-full"
-                      src={currentUser?.photo}
+                      src={currentUser?.profileImageUrl}
                       alt=""
                     />
                   </Menu.Button>

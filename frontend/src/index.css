@@ -42,6 +42,11 @@
     focus:border-b-primaryColor text-[16px] leading-7 text-headingColor
     placeholder:text-textColor  cursor-pointer rounded-md;
   }
+
+  .form__input_regular {
+    @apply appearance-none border-2 border-gray-200 rounded-md w-full py-2 px-4
+     text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primaryColor;
+  }
 }
 
 @media only screen and (max-width: 1024px) {

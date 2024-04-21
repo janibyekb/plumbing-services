@@ -3,7 +3,7 @@ import { useBackendGet } from "../../lib/hooks";
 
 export default function Plumbers() {
   const [plumbers, fetchPlumbers] = useBackendGet("vendors", []);
-  console.log(plumbers);
+
   return (
     <>
       <section className="bg-[#ffff0ea] pt-5">

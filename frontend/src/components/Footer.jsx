@@ -25,7 +25,7 @@ export default function Footer() {
     },
   ];
   return (
-    <footer className="pb-16 pt-10 bg-slate-200">
+    <footer className="pb-16 pt-10 bg-gray-400 shadow-sm">
       <div className="container">
         <div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px]">
           <div>

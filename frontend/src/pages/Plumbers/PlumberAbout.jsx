@@ -1,14 +1,14 @@
 import { formateDate } from "#lib/utils";
 import _ from "lodash";
 
-export default function PlumberAbout({ plumber }) {
+export default function PlumberAbout({ vendor }) {
   return (
     <div>
       <div>
         <h3 className="text-[20px] leadin-[30px] text-headingColor font-semibold flex items-center gap-2">
           About of
           <span className="text-irisBlueColor  font-bold text-[24px] leading-9">
-            {_.capitalize(plumber.name)}
+            {_.capitalize(vendor.name)}
           </span>
         </h3>
         <p className="text__para">
@@ -24,8 +24,8 @@ export default function PlumberAbout({ plumber }) {
         </h3>
 
         <ul className="pt-4 md:p-5">
-          {plumber.qualifications &&
-            plumber.qualifications.map((item) => {
+          {vendor.qualifications &&
+            vendor.qualifications.map((item) => {
               <li className="flex flex-col sm:flex-row sm:justify-between sm:items-end md:gap-5 mt-[30px]">
                 <div>
                   <span className="text-irisBlueColor text-[15px] leading-6  font-semibold">

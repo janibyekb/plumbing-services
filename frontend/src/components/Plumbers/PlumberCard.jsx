@@ -11,10 +11,9 @@ export default function PlumberCard({ plumber, key }) {
     avgRating,
     totalRating,
     photo,
-    specialty,
+    specialization,
     totalPatients,
     hospital,
-    role,
   } = plumber;
 
   const navigate = useNavigate();
@@ -34,7 +33,7 @@ export default function PlumberCard({ plumber, key }) {
             className="bg-[#CCF0F3] texst-irisBlueColor py-1 px-2 lg:py-2
          lg:px-6 text-[12px] leading-4 lg:text-[16px] lg:leading-7 font-semibold rounded"
           >
-            {_.capitalize(role)}
+            {_.capitalize(specialization)}
           </span>
 
           <div className="flex items-center gap-[6px] ">

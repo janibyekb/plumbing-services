@@ -6,17 +6,19 @@ import {
   updateVendor,
 } from "../controllers/vendor.controller.js";
 
-import { authenticate, restrict } from "../auth/verifyToken.js";
+import { restrict, verifyToken } from "../auth/verifyToken.js";
 
 import reviewRouter from "./review.router.js";
+import appointmentRouter from "./appointment.router.js";
 
 const router = express.Router();
 
 router.use("/:vendorId/reviews", reviewRouter);
+router.use("/:vendorId/appointments", appointmentRouter);
 
 router.get("/", getAllVendors);
 router.get("/:id", getSingleVendor);
-router.put("/:id", authenticate, restrict(["vendor"]), updateVendor);
-router.delete("/:id", authenticate, restrict(["vendor"]), deleteVendor);
+router.patch("/:id", verifyToken, restrict(["vendor"]), updateVendor);
+router.delete("/:id", verifyToken, restrict(["vendor"]), deleteVendor);
 
 export default router;

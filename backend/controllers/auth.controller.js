@@ -6,7 +6,7 @@ import Vendor from "../models/VendorSchema.js";
 import { errorHandler } from "../utils/error.js";
 
 export const register = async (req, res) => {
-  const { name, email, password, role, photo, gender } = req.body;
+  const { name, email, password, role, profileImageUrl, gender } = req.body;
   console.log(req.body);
   try {
     let user = null;
@@ -27,7 +27,7 @@ export const register = async (req, res) => {
         name,
         email,
         password: hashedPassword,
-        photo,
+        profileImageUrl,
         gender,
         role,
       });
@@ -37,7 +37,7 @@ export const register = async (req, res) => {
         name,
         email,
         password: hashedPassword,
-        photo,
+        profileImageUrl,
         gender,
         role,
         specialization: "Plumber",

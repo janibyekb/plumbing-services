@@ -5,15 +5,18 @@ import { fileURLToPath } from "url";
 import path from "path";
 import { basename } from "path";
 import mongoose from "mongoose";
-
-import dotenv from "dotenv";
-dotenv.config();
+import bodyParser from "body-parser";
+import methodOverride from "method-override";
+import morgan from "morgan";
 
 import authRoute from "./routes/auth.router.js";
 import userRoute from "./routes/user.router.js";
 import reviewRoute from "./routes/review.router.js";
 import vendorRoute from "./routes/vendor.router.js";
+import appointmentRoute from "./routes/appointment.router.js";
 
+import dotenv from "dotenv";
+dotenv.config();
 //app config
 const port = process.env.PORT || 9090;
 const app = express();
@@ -51,7 +54,12 @@ app.use(function (req, res, next) {
   );
   next();
 });
-console.log(__dirname);
+
+app.use(bodyParser.urlencoded({ extended: false })); // use body parser so we can grab information from POST requests
+app.use(bodyParser.json());
+app.use(methodOverride("X-HTTP-Method-Override"));
+app.use(morgan("combined")); //request info logging
+
 app.use("/", express.static(path.join(__dirname, "../frontend/build/")));
 
 app.get("/", (req, res) => res.send("Ok"));
@@ -60,6 +68,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/vendors", vendorRoute);
 app.use("/api/reviews", reviewRoute);
+app.use("/api/appointments", appointmentRoute);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
