@@ -1,27 +1,30 @@
-import startIcon from "../../assets/images/Star.png";
-
+import startIcon from "#assets/images/Star.png";
 import { Link, useNavigate } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
-import defaultImg from "../../assets/images/default0.png";
+import defaultImg from "#assets/images/default0.png";
 import _ from "lodash";
 
-export default function PlumberCard({ plumber, key }) {
+export default function VendorCard({ vendor, key }) {
   const {
     name,
     avgRating,
     totalRating,
-    photo,
+    profileImageUrl,
     specialization,
     totalPatients,
-    hospital,
-  } = plumber;
+    address,
+  } = vendor;
 
   const navigate = useNavigate();
 
   return (
-    <div className="p-3 lg:p-5 border rounded-xl">
+    <div className="p-3 lg:p-5 border-2 shadow-xl rounded-xl ">
       <div className="w-[200px] flex items-center mx-auto">
-        <img src={photo ? photo : defaultImg} className="w-full" alt="" />{" "}
+        <img
+          src={profileImageUrl ? profileImageUrl : defaultImg}
+          className="w-full rounded-full"
+          alt=""
+        />{" "}
       </div>
 
       <div className="border-t border-t-gray-300 mt-4">
@@ -58,11 +61,11 @@ export default function PlumberCard({ plumber, key }) {
               +{totalPatients > 0 ? totalPatients : 0} clients
             </h3>
             <p className="text-[14px] leading-6 font-[400] text-textColor">
-              At {hospital}
+              At {address}
             </p>
           </div>
           <Link
-            to={`${plumber._id}`}
+            to={`${vendor._id}`}
             className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] 
                     flex items-center justify-center group hover:bg-primaryColor hover:border-none"
           >

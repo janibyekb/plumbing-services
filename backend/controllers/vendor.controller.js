@@ -37,7 +37,7 @@ export const getSingleVendor = async (req, res, next) => {
 
     res.status(200).json(vendor);
   } catch (error) {
-    console.log(err);
+    console.log(error);
     res.status(404).json({ success: false, message: "No user found!" });
   }
 };

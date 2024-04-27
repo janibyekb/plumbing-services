@@ -2,7 +2,7 @@ export default function ServiceCard({ item }) {
   return (
     <>
       <div
-        class="inline-flex gap-5 px-5 "
+        className="inline-flex gap-5 px-5 "
         style={{ cursor: "pointer" }}
         onClick={() => navigate("/plumbers", { state: { name: item.name } })}
       >
@@ -12,7 +12,7 @@ export default function ServiceCard({ item }) {
             {item.name}
           </h5>
         </div>
-        <div class="">{item.desc}</div>
+        <div className="">{item.desc}</div>
       </div>
     </>
   );

@@ -4,13 +4,14 @@ import plumbingService from "../assets/images/canvas/plumbing-service.png";
 import icon03 from "../assets/images/canvas/icon03.png";
 import faqImg from "../assets/images/faq-img.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 
 import ServiceList from "../components/Services/ServiceList";
 
 import FaqList from "../components/Faq/FaqList";
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <>
       <>
@@ -27,32 +28,45 @@ export default function Home() {
                     Are you tired of dealing with plumbing issues that interrupt
                     your everyday life? We present to you an extensive selection
                     of plumbing solutions tailored to suit your specific needs.
-                    Your satisfaction is our top priority, and we are eager to
-                    prove it.
                   </p>
-                  <button className="btn"> Request an Appointment </button>
+                  <div>
+                    <button
+                      className="btn me-4"
+                      onClick={() => navigate("plumbers")}
+                    >
+                      {" "}
+                      Find a plumber
+                    </button>
+                    <button
+                      className="btn"
+                      // onClick={() => navigate("plumbers")}
+                    >
+                      {" "}
+                      Emergency Service
+                    </button>{" "}
+                  </div>
                 </div>
 
-                <div className="mt-[30px] lg:mt-[70px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px]">
+                <div className="mt-[20px] lg:mt-[50px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px]">
                   <div>
                     <h2 className="text-[36px] leading-56[px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
                       30+
                     </h2>
-                    <span className="w-[100px] h-2 bg-yellowColor rounded-full block mt-[-14px]"></span>
+                    <span className="w-[100px] h-2 bg-gray-400 rounded-full block mt-[-14px]"></span>
                     <p className="text__para"> Daily Clients </p>
                   </div>
                   <div>
                     <h2 className="text-[36px] leading-56[px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
                       15+
                     </h2>
-                    <span className="w-[100px] h-2 bg-purpleColor rounded-full block mt-[-14px]"></span>
-                    <p className="text__para"> Service Specialists </p>
+                    <span className="w-[100px] h-2 bg-gray-400 rounded-full block mt-[-14px]"></span>
+                    <p className="text__para"> Service Experts </p>
                   </div>
                   <div>
                     <h2 className="text-[36px] leading-56[px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
                       100%
                     </h2>
-                    <span className="w-[100px] h-2 bg-irisBlueColor rounded-full block mt-[-14px]"></span>
+                    <span className="w-[100px] h-2 bg-gray-400 rounded-full block mt-[-14px]"></span>
                     <p className="text__para"> Client Satisfaction </p>
                   </div>
                 </div>
@@ -78,8 +92,8 @@ export default function Home() {
                 Providing the best plumbing services
               </h2>
               <p className="text__para text-center">
-                World-class service for everyone. Our experts offer unmatched
-                quality service that you can count on
+                Your satisfaction is our top priority, and we are eager to prove
+                it.
               </p>
             </div>
             <div className="flex flex-wrap items-center flex-col md:flex-row gap-5 lg:gap-[30px]">

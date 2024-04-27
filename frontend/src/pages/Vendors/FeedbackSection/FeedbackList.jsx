@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { formateDate } from "#lib/utils";
 import { AiFillStar } from "react-icons/ai";
-import defaultImg from "../../assets/images/default0.png";
+import defaultImg from "#assets/images/default0.png";
 import FeedbackForm from "./FeedbackForm";
 
-export default function Feedback({ plumber, fetchData }) {
-  const { reviews } = plumber;
+export default function FeedbackList({ vendor, fetchData }) {
+  const { reviews } = vendor;
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+
   return (
     <div>
       <div className="mb-[50px]">
@@ -20,7 +21,9 @@ export default function Feedback({ plumber, fetchData }) {
               <figure className="w-10 h-10 rounded-full">
                 <img
                   className="w-full"
-                  src={plumber.photo ? plumber.photo : defaultImg}
+                  src={
+                    vendor.profileImageUrl ? vendor.profileImageUrl : defaultImg
+                  }
                   alt=""
                 />
               </figure>
@@ -30,7 +33,7 @@ export default function Feedback({ plumber, fetchData }) {
                   {review.user.name}
                 </h5>
                 <p className="text-[14px] leading-6 text-textColor">
-                  {formateDate("02-14-2023")}
+                  {formateDate(review.updatedAt)}
                 </p>
                 <p className="text-[15px] text__para mt-3 font-medium">
                   {review.reviewText}
@@ -54,7 +57,7 @@ export default function Feedback({ plumber, fetchData }) {
           </div>
         ) : (
           <FeedbackForm
-            plumberId={plumber._id}
+            vendorId={vendor._id}
             fetchData={fetchData}
             onClose={() => {
               setShowFeedbackForm(false);

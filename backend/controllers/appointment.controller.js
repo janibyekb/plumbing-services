@@ -38,3 +38,25 @@ export const createAppointment = async (req, res) => {
     console.log(err);
   }
 };
+
+export const updateAppointment = async (req, res) => {
+  try {
+    const data = await Appointment.findByIdAndUpdate(req.params.id, {
+      ...req.body,
+    });
+    console.log(data);
+    res.status(201).send(data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const deleteAppointment = async (req, res) => {
+  try {
+    const data = await Appointment.findByIdAndDelete(req.params.id);
+    console.log(data);
+    res.status(201).send(data);
+  } catch (err) {
+    console.log(err);
+  }
+};

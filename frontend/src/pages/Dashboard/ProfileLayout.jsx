@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
-
-import PlumberProfile from "./PlumberAccount/PlumberProfile";
+import VendorProfile from "./VendorAccount/VendorProfile";
 import UserProfile from "./UserAccount/UserProfile";
 
 export default function ProfileLayout() {
@@ -9,7 +8,7 @@ export default function ProfileLayout() {
   return (
     <div className="">
       {currentUser.role === "user" && <UserProfile />}
-      {currentUser.role === "vendor" && <PlumberProfile />}{" "}
+      {currentUser.role === "vendor" && <VendorProfile />}{" "}
     </div>
   );
 }

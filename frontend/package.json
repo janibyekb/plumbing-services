@@ -27,6 +27,7 @@
     "swiper": "^9.3.2"
   },
   "imports": {
+    "#assets/*": "./src/assets/*",
     "#styles/*": "./src/styles/*",
     "#components/*": "./src/components/*",
     "#lib/*": "./src/lib/*",

@@ -1,8 +1,8 @@
-import PlumberCard from "../../components/Plumbers/PlumberCard";
 import { useBackendGet } from "../../lib/hooks";
+import VendorCard from "./Vendor/VendorCard";
 
-export default function Plumbers() {
-  const [plumbers, fetchPlumbers] = useBackendGet("vendors", []);
+export default function VendorList() {
+  const [vendors, fetchVendors] = useBackendGet("vendors", []);
 
   return (
     <>
@@ -15,17 +15,14 @@ export default function Plumbers() {
               className="py-4 pl-4 bg-transparent w-full focus:outline-none cursor-pointer placeholder:text-textColor"
               placeholder="Search Plumber"
             />
-            <button className="btn mt-0 rounded-[0px] rounded-r-md">
-              Search
-            </button>
           </div>
         </div>
         <br />
 
-        <div className="container ">
-          <div className="grid grid-cold-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {plumbers.map((plumber) => (
-              <PlumberCard key={plumber.id} plumber={plumber} />
+        <div className="container">
+          <div className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mx-auto ">
+            {vendors.map((vendor) => (
+              <VendorCard key={vendor._id} vendor={vendor} />
             ))}
           </div>
         </div>

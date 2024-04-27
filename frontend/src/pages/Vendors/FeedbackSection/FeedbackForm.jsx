@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
-import { BACKEND_PATH } from "../../lib/utils";
+import { BACKEND_PATH } from "../../../lib/utils";
 import axios from "axios";
 
-export default function FeedbackForm({ plumberId, onClose }) {
+import { toast } from "react-toastify";
+
+export default function FeedbackForm({ vendorId, onClose }) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
 
@@ -13,16 +15,18 @@ export default function FeedbackForm({ plumberId, onClose }) {
     e.preventDefault();
     try {
       let { data } = await axios.post(
-        `${BACKEND_PATH}plumbers/${plumberId}/reviews`,
+        `${BACKEND_PATH}vendors/${vendorId}/reviews`,
         {
           rating: rating,
           reviewText: reviewText,
         }
       );
       if (data) {
+        toast.success(data.message);
         onClose();
       }
     } catch (err) {
+      toast.success(err.message);
       console.log(err);
     }
   };

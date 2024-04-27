@@ -1,7 +1,7 @@
 import { formateDate } from "#lib/utils";
 import _ from "lodash";
 
-export default function PlumberAbout({ vendor }) {
+export default function AboutSection({ vendor }) {
   return (
     <div>
       <div>

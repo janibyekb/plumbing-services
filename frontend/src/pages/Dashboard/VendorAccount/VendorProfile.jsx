@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { BACKEND_PATH } from "#lib/utils.js";
 
-export default function PlumberProfile() {
+export default function VendorProfile() {
   const { currentUser } = useSelector((state) => state.user);
   const fileRef = useRef(null);
   const dispatch = useDispatch();

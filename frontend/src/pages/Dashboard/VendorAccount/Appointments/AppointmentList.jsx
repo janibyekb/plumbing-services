@@ -22,7 +22,6 @@ export default function AppointmentList() {
     `vendors/${currentUser._id}/appointments`,
     []
   );
-  console.log(data);
 
   const [activeAppointments, setActiveAppointments] = useState([]);
   const [closedAppointments, setClosedAppointments] = useState([]);
@@ -30,18 +29,14 @@ export default function AppointmentList() {
 
   useEffect(() => {
     setActiveAppointments(
-      _.filter(data, (appointment) => appointment.status === "Accepted")
+      _.filter(data, (appointment) => appointment.status === "accepted")
     );
 
     setIncomingAppointments(
       _.filter(data, (appointment) => appointment.status === "pending")
     );
     setClosedAppointments(
-      _.filter(
-        data,
-        (appointment) =>
-          appointment.status === "Declined" || appointment.status === "Done"
-      )
+      _.filter(data, (appointment) => appointment.status === "done")
     );
   }, [data]);
 

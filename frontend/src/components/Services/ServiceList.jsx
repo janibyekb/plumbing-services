@@ -11,7 +11,7 @@ export default function ServiceList() {
       {services.map((item, index) => (
         <>
           <div
-            class="border border-1 rounded-3xl items-center w-[200px] py-5 px-5"
+            className="border border-1 rounded-3xl items-center w-[200px] py-5 px-5"
             style={{ cursor: "pointer" }}
             onClick={() =>
               navigate("/plumbers", { state: { name: item.name } })
