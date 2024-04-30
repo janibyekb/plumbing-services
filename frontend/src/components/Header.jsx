@@ -66,12 +66,13 @@ export default function Header() {
     try {
       dispatch(signOutUserStart());
       const res = await fetch("/api/auth/signout");
-      const data = await res.json();
-      if (data.success === false) {
-        dispatch(deleteUserFailure(data.message));
+      // console.log(res);
+      // const data = await res.json();
+      if (res.status !== 200) {
+        dispatch(deleteUserFailure(res.body));
         return;
       }
-      dispatch(deleteUserSuccess(data));
+      dispatch(deleteUserSuccess(res.body));
       navigate("/login");
     } catch (error) {
       dispatch(deleteUserFailure(data.message));

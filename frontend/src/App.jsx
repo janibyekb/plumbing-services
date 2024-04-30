@@ -39,9 +39,9 @@ function App() {
           <Route path="/register" element={<Signup />} />
           <Route path="/services" element={<ServiceList />} />
           <Route path="/contact" element={<Contact />} />
-          <Route element={<PrivateRoute allowedRoles={["user", "plumber"]} />}>
+          <Route element={<PrivateRoute allowedRoles={["USER", "VENDOR"]} />}>
             <Route path="/profile" element={<ProfileLayout />}>
-              {currentUser && currentUser.role == "vendor" ? (
+              {currentUser && currentUser.role == "VENDOR" ? (
                 <>
                   <Route path="" element={<AppointmentList />} />
                   <Route path="settings" element={<ProfileSettings />} />

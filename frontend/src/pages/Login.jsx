@@ -29,10 +29,10 @@ export default function Login() {
     e.preventDefault();
     dispatch(signInStart());
     try {
-      let { data } = await axios.post(`${BACKEND_PATH}auth/login`, formData);
-      console.log(data);
-      if (data) {
-        dispatch(signInSuccess(data));
+      const res = await axios.post(`${BACKEND_PATH}auth/login`, formData);
+      console.log(res);
+      if (res.status == 200) {
+        dispatch(signInSuccess(res.data));
 
         toast.success("Success");
         navigate("/profile");

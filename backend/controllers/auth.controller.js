@@ -11,9 +11,9 @@ export const register = async (req, res) => {
   try {
     let user = null;
 
-    if (role === "client") {
+    if (role === "USER") {
       user = await User.findOne({ email });
-    } else if (role === "plumber") {
+    } else if (role === "VENDOR") {
       user = await Vendor.findOne({ email });
     }
 
@@ -22,7 +22,7 @@ export const register = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    if (role == "user") {
+    if (role == "USER") {
       user = new User({
         name,
         email,
@@ -32,7 +32,7 @@ export const register = async (req, res) => {
         role,
       });
     }
-    if (role == "vendor") {
+    if (role == "VENDOR") {
       user = new Vendor({
         name,
         email,
@@ -95,7 +95,7 @@ export async function login(req, res, next) {
 export const signOut = async (req, res, next) => {
   try {
     res.clearCookie("access_token");
-    res.status(200).json("User has been logged out!");
+    res.status(200).send("User has been logged out!");
   } catch (error) {
     console.log(error);
     next(error);

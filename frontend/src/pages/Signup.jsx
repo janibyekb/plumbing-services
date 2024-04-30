@@ -8,7 +8,7 @@ import { BACKEND_PATH, convertToBase64 } from "../lib/utils";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
 import axios from "axios";
-import defaultImg from "../assets/images/default0.png";
+import defaultImg from "#assets/images/default0.png";
 
 export default function Signup() {
   const [selectedFile, setSelectedFile] = useState();
@@ -17,9 +17,8 @@ export default function Signup() {
     name: "",
     email: "",
     password: "",
-    profileImgUrl: "",
-    gender: "",
-    role: "user",
+    // profileImgUrl: "",
+    role: "USER",
   });
 
   const [loading, setLoading] = useState(false);
@@ -43,15 +42,14 @@ export default function Signup() {
     e.preventDefault();
     setLoading(true);
     try {
-      let res;
-      if (!formData.profileImgUrl) {
-        const base64 = await convertToBase64(defaultImg);
-        setFormData({ ...formData, profileImgUrl: base64 });
-      }
+      // if (!formData.profileImgUrl) {
+      //   const base64 = await convertToBase64(defaultImg);
+      //   setFormData({ ...formData, profileImgUrl: base64 });
+      // }
 
-      let { data } = await axios.post(`${BACKEND_PATH}auth/register`, formData);
-
-      if (data) {
+      const res = await axios.post(`${BACKEND_PATH}auth/register`, formData);
+      console.log(res);
+      if (res.status === 201) {
         setLoading(false);
         toast.success("Success");
         navigate("/login");
@@ -129,24 +127,8 @@ export default function Signup() {
                     onChange={handleInputChange}
                     className="text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none"
                   >
-                    <option value="user"> Regular User</option>
-                    <option value="vendor"> Plumber</option>
-                  </select>
-                </label>
-                <label
-                  htmlFor="gender"
-                  className="text-headingColor font-bold text-[16px] leading-7"
-                >
-                  Gender:
-                  <select
-                    value={formData.gender}
-                    onChange={handleInputChange}
-                    name="gender"
-                    className="text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none"
-                  >
-                    <option value=""> Select</option>
-                    <option value="male"> Male</option>
-                    <option value="female"> Femal</option>
+                    <option value="USER"> Regular User</option>
+                    <option value="VENDOR"> Plumber</option>
                   </select>
                 </label>
               </div>
