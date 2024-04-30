@@ -1,0 +1,4 @@
+
+MONGO = mongodb+srv://jackdotb:jack1234dotb@service-hub.xp7vz93.mongodb.net/?retryWrites=true&w=majority
+
+JWT_SECRET = R+UpqoMRUyvkogLywe1FXiAcRjKouY3tZ5E0fFcak/x5hYMG+GrHR065YT4dct3hXeOxD5leU9TUlVnTSEABEid3NXqoyt6sFn/vJ37uc7L4Bb92X9qhTbKO2TfPNd38iZBn/wXfG4XoaYyRCe4RYBsYan5wfQQm/NOExeC8q9aRUxxaU9p5WpwdhLBrUmf4jvFUkCwkquhX6+4oLcDLVuJ//aqgTo4PyuBfL63AZcgD0J3OWjqQI94dtmY3zDKDBWdQp7c0etzg5kmT6h+sWadqAnvQC5mBIqRVOEa4PiE22wPnVIO88c5QGuZHCtVCLDBjXit+pgifi0KZEWc8FQ==
