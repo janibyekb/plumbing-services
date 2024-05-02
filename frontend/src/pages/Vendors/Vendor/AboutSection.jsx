@@ -42,7 +42,7 @@ export default function AboutSection({ vendor }) {
             })}
         </ul>
       </div>
-      <div className="mt-12">
+      <div className="mt-12 hidden">
         <h3 className="text-[20px] leadin-[30px] text-headingColor font-semibold-">
           Experience
         </h3>

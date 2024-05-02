@@ -86,8 +86,8 @@ export default function Header() {
         <div className="flex justify-between">
           <a href="/">
             <h1 className="font-bold flex flex-wrap text-[21px]">
-              <span className="text-blue-700">Service</span>
-              <span className="text-slate-700">Hub</span>
+              <span className="text-blue-700">Plumb</span>
+              <span className="text-slate-700">Ease</span>
             </h1>
           </a>
           <div className="navigation" ref={menuRef} onClick={toggleMenu}>

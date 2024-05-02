@@ -13,10 +13,12 @@ import { BsHouse, BsHouseFill } from "react-icons/bs";
 
 export default function VendorDetails() {
   const location = useLocation();
-  const [tab, setTab] = useState("about");
+  const [tab, setTab] = useState("feedback");
 
   const { id } = useParams();
-  const [vendor, fetchData] = useBackendGet(`vendors/${id}`, {});
+  const [vendor, fetchData] = useBackendGet(`vendors/${id}`, {
+    reviews:[]
+  });
 
   const navigate = useNavigate();
 
