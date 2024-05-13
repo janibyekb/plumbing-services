@@ -17,10 +17,8 @@ export const getAllVendors = async (req, res, next) => {
       //   vendors = await Vendor.find({ isApproved: "approved" }).select(
       //     "-password"
       //   );
-
       vendors = await Vendor.find({}).select("-password");
     }
-
     res.status(200).json(vendors);
   } catch (error) {
     res.status(404).json({ success: false, message: "No user found!" });
