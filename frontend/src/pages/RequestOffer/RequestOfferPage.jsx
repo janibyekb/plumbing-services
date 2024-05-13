@@ -95,7 +95,7 @@ export default function RequestOfferPage() {
             }}
           >
             <img
-              src={vendor.photo ? vendor.photo : defaultImg}
+              src={vendor.profileImageUrl ? vendor.profileImageUrl : defaultImg}
               alt="Plumber"
               className="rounded-full"
               style={{ maxHeight: "150px", maxWidth: "150px" }}

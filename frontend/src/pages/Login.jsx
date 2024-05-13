@@ -34,12 +34,13 @@ export default function Login() {
       if (res.status == 200) {
         dispatch(signInSuccess(res.data));
 
-        toast.success("Success");
+        toast.success("Successful login");
         navigate("/profile");
       }
     } catch (err) {
       console.log(err);
-      dispatch(signInFailure(error.message));
+      dispatch(signInFailure(err.message));
+      toast.error("Wrong Credientials")
     }
   };
   return (

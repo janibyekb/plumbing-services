@@ -42,7 +42,7 @@ export default function AppointmentList() {
 
   return (
     <div>
-      <Tabs id="custom-animation" value="pending">
+      <Tabs id="custom-animation" value="active">
         <TabsHeader>
           <Tab key="pending" value="pending">
             Pending

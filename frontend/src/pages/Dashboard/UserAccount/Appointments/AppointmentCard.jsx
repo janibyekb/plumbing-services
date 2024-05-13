@@ -21,6 +21,7 @@ import { useSelector } from "react-redux";
 import { BACKEND_PATH } from "#lib/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
+import AppoinmentInfoModal from "./AppoinmentInfoModal";
 
 export default function AppointmentCard({ data, fetchData, onShowModal }) {
   console.log(data);
@@ -123,6 +124,15 @@ export default function AppointmentCard({ data, fetchData, onShowModal }) {
           </div>
         </div>
       </div>
+      {appointmentModalShow && (
+        <AppoinmentInfoModal
+          data={data}
+          open={appointmentModalShow}
+          handleOpen={() => setAppointmentModalShow(!appointmentModalShow)}
+          handleUpdate={updateJobStatus}
+          fetchData={fetchData}
+        />
+      )}
     </div>
   );
 }

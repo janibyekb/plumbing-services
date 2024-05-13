@@ -17,7 +17,7 @@ export default function VendorDetails() {
 
   const { id } = useParams();
   const [vendor, fetchData] = useBackendGet(`vendors/${id}`, {
-    reviews:[]
+    reviews: [],
   });
 
   const navigate = useNavigate();
@@ -71,8 +71,7 @@ export default function VendorDetails() {
                   </div>
 
                   <p className="text__para text-[14px] leading-5 md:text-[15px] lg:max-w-[390px] ">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Velit soluta, obcaecati architecto aut quidem qui est.
+                    {vendor.bio}
                   </p>
                 </div>
               </div>

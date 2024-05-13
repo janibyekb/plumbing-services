@@ -1,12 +1,5 @@
 import { Link } from "react-router-dom";
 
-import { RiLinkedinFill } from "react-icons/ri";
-
-import {
-  AiFillYoutube,
-  AiFillGithub,
-  AiOutlineInstagram,
-} from "react-icons/ai";
 export default function Footer() {
   const year = new Date().getFullYear();
   const socialLinks = [];

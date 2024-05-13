@@ -11,7 +11,7 @@ import express from "express";
 const router = express.Router({ mergeParams: true });
 
 router.get("/", getAllAppointments);
-router.post("/", verifyToken, restrict(["user"]), createAppointment);
+router.post("/", verifyToken, restrict(["USER"]), createAppointment);
 router.patch("/:id", verifyToken, updateAppointment);
 router.delete("/:id", verifyToken, deleteAppointment);
 

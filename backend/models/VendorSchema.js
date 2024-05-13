@@ -12,7 +12,7 @@ const VendorSchema = new mongoose.Schema({
   serviceFee: { type: Number },
   role: {
     type: String,
-    enum: ["user", "vendor"],
+    enum: ["USER", "VENDOR"],
     default: "user",
   },
   specialization: { type: String },
@@ -24,7 +24,7 @@ const VendorSchema = new mongoose.Schema({
   },
   workingRange: {
     type: Number,
-    default: 0,
+    default: 1,
   },
   bio: { type: String, maxLength: 50 },
   about: { type: String },

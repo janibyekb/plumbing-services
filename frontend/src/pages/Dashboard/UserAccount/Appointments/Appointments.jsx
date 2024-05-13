@@ -30,7 +30,7 @@ export default function Appointments() {
 
   useEffect(() => {
     setActiveAppointments(
-      _.filter(data, (appointment) => appointment.status === "Accepted")
+      _.filter(data, (appointment) => appointment.status === "accepted")
     );
 
     setIncomingAppointments(
@@ -40,7 +40,7 @@ export default function Appointments() {
       _.filter(
         data,
         (appointment) =>
-          appointment.status === "Declined" || appointment.status === "Done"
+          appointment.status === "declined" || appointment.status === "done"
       )
     );
   }, [data]);

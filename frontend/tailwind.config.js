@@ -10,6 +10,7 @@ export default withMT({
         irisBlueColor: "#01B5C5",
         headingColor: "#181A1E",
         textColor: "#4E545F",
+        yellowColor: "#FEB60D",
       },
 
       boxShadow: {

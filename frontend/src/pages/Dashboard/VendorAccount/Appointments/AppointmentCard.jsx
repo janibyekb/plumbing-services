@@ -21,10 +21,10 @@ import { useSelector } from "react-redux";
 import { BACKEND_PATH } from "#lib/utils";
 import axios from "axios";
 import { toast } from "react-toastify";
+import AppoinmentInfoModal from "./AppoinmentInfoModal";
 
 export default function AppointmentCard({ data, fetchData, onShowModal }) {
   const [appointmentModalShow, setAppointmentModalShow] = useState(false);
-
   async function updateJobStatus(dd) {
     const status = data.status == "pending" ? "accepted" : "done";
     try {
@@ -52,9 +52,9 @@ export default function AppointmentCard({ data, fetchData, onShowModal }) {
         `${BACKEND_PATH}appointments/${data._id}`
       );
       setTimeout(function () {
+        fetchData();
         toast.success("Successfully removed");
         setLoading(false);
-        fetchData();
       }, 1000);
     } catch (err) {
       console.log(err);
@@ -96,7 +96,7 @@ export default function AppointmentCard({ data, fetchData, onShowModal }) {
                   >
                     <BsCheckAll color="green" size={25} className="" />
                     {data.status !== "Done" && (
-                      <>{data.status === "Accepted" ? "Done" : "Accept"}</>
+                      <>{data.status === "accepted" ? "Done" : "Accept"}</>
                     )}
                   </MenuItem>
                 )}
@@ -131,6 +131,14 @@ export default function AppointmentCard({ data, fetchData, onShowModal }) {
           </div>
         </div>
       </div>
+      {appointmentModalShow && (
+        <AppoinmentInfoModal
+          data={data}
+          open={appointmentModalShow}
+          handleOpen={() => setAppointmentModalShow(!appointmentModalShow)}
+          handleUpdate={updateJobStatus}
+        />
+      )}
     </div>
   );
 }

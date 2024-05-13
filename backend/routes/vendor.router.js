@@ -18,7 +18,7 @@ router.use("/:vendorId/appointments", appointmentRouter);
 
 router.get("/", getAllVendors);
 router.get("/:id", getSingleVendor);
-router.patch("/:id", verifyToken, restrict(["vendor"]), updateVendor);
-router.delete("/:id", verifyToken, restrict(["vendor"]), deleteVendor);
+router.patch("/:id", verifyToken, restrict(["VENDOR"]), updateVendor);
+router.delete("/:id", verifyToken, restrict(["VENDOR"]), deleteVendor);
 
 export default router;

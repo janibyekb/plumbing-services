@@ -7,8 +7,8 @@ export default function ProfileLayout() {
   console.log(currentUser);
   return (
     <div className="">
-      {currentUser.role === "user" && <UserProfile />}
-      {currentUser.role === "vendor" && <VendorProfile />}{" "}
+      {currentUser.role === "USER" && <UserProfile />}
+      {currentUser.role === "VENDOR" && <VendorProfile />}{" "}
     </div>
   );
 }

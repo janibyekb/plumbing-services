@@ -38,11 +38,11 @@ export default function ServiceInfoForm({
           <input
             id="formServiceType"
             type="text"
-            placeholder="Enter the type of the requested service"
+            placeholder="~"
             name="name"
             onChange={handleChange}
             value={formData.name}
-            className="w-full  py-3 border-b  border-solid  focus:outline-none
+            className="w-full  pt-3 border-b  border-gray-500  focus:outline-none
               text-[16px] leading-7 text-headingColor
               placeholder:text-textColor  cursor-pointer"
           />
@@ -54,7 +54,7 @@ export default function ServiceInfoForm({
           <textarea
             id="formProblemDescription"
             style={{ height: "200px" }}
-            placeholder="Describe your problem in short details"
+            placeholder=""
             name="description"
             onChange={handleChange}
             value={formData.description}

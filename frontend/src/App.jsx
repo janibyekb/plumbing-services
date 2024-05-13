@@ -14,7 +14,7 @@ import ServiceList from "./pages/Services/ServiceList";
 import PageMissing from "./components/PageMissing";
 import AppointmentList from "./pages/Dashboard/VendorAccount/Appointments/AppointmentList";
 import ProfileSettings from "./pages/Dashboard/VendorAccount/Settings/ProfileSettings";
-import RequestOfferPage from "#pages/Dashboard/VendorAccount/RequestOffer/RequestOfferPage.jsx";
+import RequestOfferPage from "#pages/RequestOffer/RequestOfferPage.jsx";
 import VendorDetails from "#pages/Vendors/Vendor/VendorDetails.jsx";
 import VendorList from "#pages/Vendors/VendorList.jsx";
 import { useSelector } from "react-redux";
@@ -24,10 +24,10 @@ import Settings from "#pages/Dashboard/UserAccount/Settings.jsx";
 function App() {
   const { currentUser } = useSelector((state) => state.user);
   return (
-    <>
+    <div className="flex flex-col h-screen">
       {" "}
       <Header />
-      <main className="">
+      <main className="main flex-grow">
         <Routes>
           <Route path="" element={<Home />} />
 
@@ -59,7 +59,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

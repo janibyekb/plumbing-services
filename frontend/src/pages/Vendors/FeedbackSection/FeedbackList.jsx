@@ -8,6 +8,8 @@ export default function FeedbackList({ vendor, fetchData }) {
   const { reviews } = vendor;
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
 
+  console.log(reviews);
+
   return (
     <div>
       <div className="mb-[50px]">
@@ -22,7 +24,9 @@ export default function FeedbackList({ vendor, fetchData }) {
                 <img
                   className="w-full"
                   src={
-                    vendor.profileImageUrl ? vendor.profileImageUrl : defaultImg
+                    review.user.profileImageUrl
+                      ? review.user.profileImageUrl
+                      : defaultImg
                   }
                   alt=""
                 />

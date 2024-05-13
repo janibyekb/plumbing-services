@@ -29,7 +29,7 @@ const reviewSchema = new mongoose.Schema(
 reviewSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
-    select: "name photo",
+    select: "name profileImageUrl",
   });
 
   next();
@@ -42,7 +42,7 @@ reviewSchema.statics.calcAverageRatings = async function (vendorId) {
     },
     {
       $group: {
-        _id: "$plumber",
+        _id: "$vendor",
         numOfRating: { $sum: 1 },
         avgRating: { $avg: "$rating" },
       },

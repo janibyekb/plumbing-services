@@ -4,7 +4,7 @@ export default function ToastComponent(props) {
   return (
     <ToastContainer
       position="top-right"
-      autoClose={2000}
+      autoClose={1000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick
@@ -13,6 +13,7 @@ export default function ToastComponent(props) {
       draggable
       pauseOnHover
       theme="light"
+      style={{ zIndex: "9999" }}
       {...props}
     />
   );

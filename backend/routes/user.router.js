@@ -20,12 +20,12 @@ router.get(
   getAllUsers
 );
 
-router.put("/:id", verifyToken, restrict(["user"]), updateUser);
-router.delete("/:id", verifyToken, restrict(["user"]), deleteUser);
+router.put("/:id", verifyToken, restrict(["USER"]), updateUser);
+router.delete("/:id", verifyToken, restrict(["USER"]), deleteUser);
 
-router.get("/appointments", verifyToken, restrict(["user"]), getAppointments);
-router.patch("/:id", verifyToken, restrict(["user"]), updateUser);
-router.delete("/:id", verifyToken, restrict(["user"]), deleteUser);
-router.get("/:id", verifyToken, restrict(["user"]), getSingleUser);
+router.get("/appointments", verifyToken, restrict(["USER"]), getAppointments);
+router.patch("/:id", verifyToken, restrict(["USER"]), updateUser);
+router.delete("/:id", verifyToken, restrict(["USER"]), deleteUser);
+router.get("/:id", verifyToken, restrict(["USER"]), getSingleUser);
 
 export default router;

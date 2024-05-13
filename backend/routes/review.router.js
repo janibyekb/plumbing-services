@@ -11,6 +11,6 @@ const router = express.Router({ mergeParams: true });
 router
   .route("/")
   .get(getAllReviews)
-  .post(verifyToken, restrict(["user"]), createReview);
+  .post(verifyToken, restrict(["USER"]), createReview);
 
 export default router;
