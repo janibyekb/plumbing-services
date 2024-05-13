@@ -12,14 +12,12 @@ import appointmentRouter from "./appointment.router.js";
 
 const router = express.Router();
 
+//Mounting the appointments route
 router.use("/:userId/appointments", appointmentRouter);
 
-router.get(
-  "/",
-  //verifyToken, restrict(["admin"]),
-  getAllUsers
-);
+router.get("/", verifyToken, restrict(["admin"]), getAllUsers);
 
+//User api routes, only accessible by clients
 router.put("/:id", verifyToken, restrict(["USER"]), updateUser);
 router.delete("/:id", verifyToken, restrict(["USER"]), deleteUser);
 

@@ -13,7 +13,7 @@ export default function ToastComponent(props) {
       draggable
       pauseOnHover
       theme="light"
-      style={{ zIndex: "9999" }}
+      style={{ zIndex: "9999" }} //setting zindex to higher to make it appear on top of everything
       {...props}
     />
   );

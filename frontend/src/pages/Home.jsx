@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <>
-        <section className="hero__section pt-[60px] 2xl:h-[800px]">
+        <section className="hero__section pt-[60px] 2xl:h-[700px]">
           <div className="container">
             <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
               {/*========= hero content ========= */}
@@ -47,7 +47,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="mt-[20px] lg:mt-[50px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px]">
+                <div className="mt-[20px] lg:mt-[50px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px] hidden">
                   <div>
                     <h2 className="text-[36px] leading-56[px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
                       30+

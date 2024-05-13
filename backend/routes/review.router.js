@@ -6,11 +6,12 @@ import {
 
 import { restrict, verifyToken } from "../auth/verifyToken.js";
 
+//To access the mounted params before the route
 const router = express.Router({ mergeParams: true });
 
 router
   .route("/")
   .get(getAllReviews)
-  .post(verifyToken, restrict(["USER"]), createReview);
+  .post(verifyToken, restrict(["USER"]), createReview); //Restricing the creation only by clients
 
 export default router;

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//Vendor model
 const VendorSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -29,7 +30,7 @@ const VendorSchema = new mongoose.Schema({
   bio: { type: String, maxLength: 50 },
   about: { type: String },
   timeSlots: { type: Array },
-  reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
+  reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }], //one to many relation on review._id
   averageRating: {
     type: Number,
     default: 0,
@@ -43,7 +44,7 @@ const VendorSchema = new mongoose.Schema({
     default: false,
   },
 
-  appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+  appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }], //onetto many relation
 });
 
 export default mongoose.model("Vendor", VendorSchema);

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import config from "../config/index.js";
 
+//User model **being used as Client**
 const UserSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
   address: {
     type: String,
   },
-  appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+  appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }], //one-to-many relation
 });
 
 export default mongoose.model("User", UserSchema);

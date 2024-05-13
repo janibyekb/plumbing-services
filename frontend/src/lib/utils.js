@@ -2,12 +2,11 @@ export const BACKEND_PATH = "/api/";
 
 export const formateDate = (date, config) => {
   const defaultOptions = { day: "numeric", month: "long", year: "numeric" };
-
   const options = config ? config : defaultOptions;
-
   return new Date(date).toLocaleDateString("en-US", options);
 };
 
+/*Fetching Location info from openstreetmap | No API keys needed */
 export async function fetchAddress(latitude, longitude) {
   const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
   try {

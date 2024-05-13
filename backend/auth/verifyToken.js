@@ -4,24 +4,7 @@ import User from "../models/UserSchema.js";
 import { errorHandler } from "../utils/error.js";
 import VendorSchema from "../models/VendorSchema.js";
 
-export const authenticate = async (req, res, next) => {
-  const authToken = req.headers.authorization;
-
-  if (!authToken || !authToken.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "No token, authorization failed" });
-  }
-
-  const token = authToken.split(" ")[1];
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return next(errorHandler(403, "Forbidden"));
-
-    req.user = user;
-    next();
-  });
-};
-
+//Authorization for given roles
 export const restrict = (roles) => async (req, res, next) => {
   const userId = req.user.id;
   console.log(userId);
@@ -44,6 +27,7 @@ export const restrict = (roles) => async (req, res, next) => {
   }
 };
 
+//Middleware for access token verification
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.access_token;
 

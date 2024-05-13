@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import Vendor from "../models/VendorSchema.js";
 import { errorHandler } from "../utils/error.js";
 
+//Sign out endpoint for all the users
 export const register = async (req, res) => {
   const { name, email, password, role, profileImageUrl, gender } = req.body;
   console.log(req.body);
@@ -51,6 +52,8 @@ export const register = async (req, res) => {
     res.status(500).send({ sucess: false, message: "Internal server error!" });
   }
 };
+
+//Login endpoint
 export async function login(req, res, next) {
   const { email, password } = req.body;
   console.log(req.body);
@@ -73,15 +76,10 @@ export async function login(req, res, next) {
       { id: validUser._id, role: validUser.role },
       process.env.JWT_SECRET
     );
+
+    //Extracting the password from the user info
     const { password: pass, appointments, ...rest } = validUser._doc;
 
-    // res.status(200).send({
-    //   status: true,
-    //   message: "Successfully login",
-    //   token,
-    //   data: { ...rest },
-    //   role,
-    // });
     res
       .cookie("access_token", token, { httpOnly: true })
       .status(200)
@@ -92,6 +90,7 @@ export async function login(req, res, next) {
   }
 }
 
+//Log out endpoint
 export const signOut = async (req, res, next) => {
   try {
     res.clearCookie("access_token");

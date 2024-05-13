@@ -17,6 +17,7 @@ import appointmentRoute from "./routes/appointment.router.js";
 
 import dotenv from "dotenv";
 dotenv.config();
+
 //app config
 const port = process.env.PORT || 9090;
 const app = express();
@@ -27,7 +28,7 @@ const __dirname = path.dirname(__filename);
 const corsOptions = {
   origin: true,
 };
-//db config
+//Connecting to MongoDb using mongoose
 const connectDb = async () => {
   try {
     await mongoose.connect(process.env.MONGO, {}).then(() => {
@@ -41,6 +42,7 @@ const connectDb = async () => {
 app.use(express.json());
 app.use(cookieParser());
 
+//Cors setup
 app.use(function (req, res, next) {
   res.set("Access-Control-Allow-Origin", req.headers.origin);
   res.set("Access-Control-Allow-Credentials", "true");
@@ -60,10 +62,10 @@ app.use(bodyParser.json());
 app.use(methodOverride("X-HTTP-Method-Override"));
 app.use(morgan("combined")); //request info logging
 
+//Serving statis client side from the frontend build folder
 app.use("/", express.static(path.join(__dirname, "../frontend/build/")));
 
-app.get("/", (req, res) => res.send("Ok"));
-
+//Api Routes for specific entities
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/vendors", vendorRoute);

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Vendor from "./VendorSchema.js";
 
+//Review Model
 const reviewSchema = new mongoose.Schema(
   {
     vendor: {
@@ -26,6 +27,7 @@ const reviewSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+//Populating a user info for every review
 reviewSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
@@ -35,6 +37,7 @@ reviewSchema.pre(/^find/, function (next) {
   next();
 });
 
+//Calculating the average ratings with incoming rating
 reviewSchema.statics.calcAverageRatings = async function (vendorId) {
   const stats = await this.aggregate([
     {

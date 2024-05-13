@@ -20,8 +20,6 @@ export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, error } = useSelector((state) => state.user);
-
   function handleInputChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
@@ -30,7 +28,6 @@ export default function Login() {
     dispatch(signInStart());
     try {
       const res = await axios.post(`${BACKEND_PATH}auth/login`, formData);
-      console.log(res);
       if (res.status == 200) {
         dispatch(signInSuccess(res.data));
 
@@ -40,7 +37,7 @@ export default function Login() {
     } catch (err) {
       console.log(err);
       dispatch(signInFailure(err.message));
-      toast.error("Wrong Credientials")
+      toast.error("Wrong Credientials");
     }
   };
   return (

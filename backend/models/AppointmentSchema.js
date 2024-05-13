@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//Appointment Model
 const appointmentSchema = new mongoose.Schema(
   {
     title: {

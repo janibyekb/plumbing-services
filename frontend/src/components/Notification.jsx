@@ -3,8 +3,6 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
-  IconButton,
-  Avatar,
   Typography,
 } from "@material-tailwind/react";
 import { IoNotifications } from "react-icons/io5";

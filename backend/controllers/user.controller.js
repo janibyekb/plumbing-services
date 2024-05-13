@@ -12,6 +12,7 @@ export const getAllUsers = async (req, res, next) => {
     res.status(404).json({ success: false, message: "No user found!" });
   }
 };
+//Fetch user by Id
 export const getSingleUser = async (req, res, next) => {
   if (req.user.id !== req.params.id)
     return next(errorHandler(401, "You can only get your account data!"));
@@ -26,6 +27,7 @@ export const getSingleUser = async (req, res, next) => {
   }
 };
 
+//Updating the user by Id
 export const updateUser = async (req, res, next) => {
   //   if (req.user.id !== req.params.id)
   //     return next(errorHandler(401, "You can only update your own account!"));
@@ -51,6 +53,7 @@ export const updateUser = async (req, res, next) => {
   }
 };
 
+//Deleting the user by given Id
 export const deleteUser = async (req, res, next) => {
   if (req.user.id !== req.params.id)
     return next(errorHandler(401, "You can only delete your own account!"));
@@ -63,6 +66,7 @@ export const deleteUser = async (req, res, next) => {
   }
 };
 
+//Fetching appointments with populated
 export const getAppointments = async (req, res, next) => {
   try {
     const appointments = await Appointment.find({ user: req.params.id });

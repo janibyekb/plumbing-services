@@ -1,5 +1,6 @@
 import Vendor from "../models/VendorSchema.js";
 
+//Get all vendors; Query search is optional, could be used on the cient side
 export const getAllVendors = async (req, res, next) => {
   try {
     const { query } = req.query;
@@ -25,6 +26,8 @@ export const getAllVendors = async (req, res, next) => {
     res.status(404).json({ success: false, message: "No user found!" });
   }
 };
+
+//Getting a vendor by id
 export const getSingleVendor = async (req, res, next) => {
   //   if (req.user.id !== req.params.id)
   //     return next(errorHandler(401, "You can only delete your own account!"));

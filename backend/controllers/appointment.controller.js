@@ -1,5 +1,6 @@
 import Appointment from "../models/AppointmentSchema.js";
 
+//Getting all the appointment
 export const getAllAppointments = async (req, res) => {
   try {
     let where = {};
@@ -18,6 +19,7 @@ export const getAllAppointments = async (req, res) => {
   }
 };
 
+//Creating a Appointment
 export const createAppointment = async (req, res) => {
   const userId = req.user.id;
 
@@ -38,7 +40,7 @@ export const createAppointment = async (req, res) => {
     console.log(err);
   }
 };
-
+//Updating a Appointment by Id
 export const updateAppointment = async (req, res) => {
   try {
     const data = await Appointment.findByIdAndUpdate(req.params.id, {
@@ -51,6 +53,7 @@ export const updateAppointment = async (req, res) => {
   }
 };
 
+//Deleting a Appointment by Id
 export const deleteAppointment = async (req, res) => {
   try {
     const data = await Appointment.findByIdAndDelete(req.params.id);
