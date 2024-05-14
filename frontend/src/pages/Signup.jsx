@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import signUpImg from "../assets/images/signup.gif";
+import signUpImg from "../assets/images/registration.gif";
 
 import { Link, useNavigate } from "react-router-dom";
 import { uploadImageToCloudinary } from "../lib/uploadCloudinary";
@@ -64,7 +64,7 @@ export default function Signup() {
     <section className="px-5 xl:px-0">
       <div className="max-w-[1170px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="hidden lg:block bg-primaryColor rounded-l-lg">
+          <div className="hidden lg:block  rounded-l-lg">
             <figure className="rounded-l-lg">
               <img src={signUpImg} alt="" className="w-full rounded-l-lg" />
             </figure>
