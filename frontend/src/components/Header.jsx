@@ -10,8 +10,9 @@ import {
   signOutUserStart,
 } from "../redux/user/userSlice";
 import { BsGear, BsGearFill } from "react-icons/bs";
-import { current } from "@reduxjs/toolkit";
+
 import { NotificationsMenu } from "./Notification";
+import defaultImg from "#styles/default.png";
 
 const navLinks = [
   {
@@ -120,7 +121,7 @@ export default function Header() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src={currentUser?.profileImageUrl}
+                        src={currentUser?.profileImageUrl || defaultImg}
                         alt=""
                       />
                     </Menu.Button>

@@ -31,19 +31,19 @@ export default function Home() {
                   </p>
                   <div>
                     <button
-                      className="btn me-4"
+                      className=" outlined me-4"
+                      // onClick={() => navigate("plumbers")}
+                    >
+                      {" "}
+                      Create Appointment
+                    </button>{" "}
+                    <button
+                      className="btn"
                       onClick={() => navigate("plumbers")}
                     >
                       {" "}
                       Find a plumber
                     </button>
-                    <button
-                      className="btn"
-                      // onClick={() => navigate("plumbers")}
-                    >
-                      {" "}
-                      Emergency Service
-                    </button>{" "}
                   </div>
                 </div>
               </div>

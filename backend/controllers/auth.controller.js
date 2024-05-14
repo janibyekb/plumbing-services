@@ -46,7 +46,7 @@ export const register = async (req, res) => {
     }
 
     await user.save();
-    res.status(200).send({ message: "User created successfully!" });
+    res.status(201).send({ message: "User created successfully!" });
   } catch (err) {
     console.log(err);
     res.status(500).send({ sucess: false, message: "Internal server error!" });

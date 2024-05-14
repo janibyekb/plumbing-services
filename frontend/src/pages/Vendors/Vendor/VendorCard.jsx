@@ -1,7 +1,7 @@
 import startIcon from "#assets/images/Star.png";
 import { Link, useNavigate } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
-import defaultImg from "#assets/images/default0.png";
+import defaultImg from "#styles/default.png";
 import _ from "lodash";
 
 export default function VendorCard({ vendor, key }) {
@@ -57,11 +57,8 @@ export default function VendorCard({ vendor, key }) {
         </div>
         <div className="mt-[18px] lg:mt-5 flex items-center justify-between">
           <div className="">
-            <h3 className="text-16px leading-7 lg:text-[18px] lg:leading-[30px] font-semibold text-headingColor">
-              +{totalPatients > 0 ? totalPatients : 0} clients
-            </h3>
             <p className="text-[14px] leading-6 font-[400] text-textColor">
-              At {address}
+              @{address}
             </p>
           </div>
           <Link

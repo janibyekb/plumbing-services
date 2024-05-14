@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import signUpImg from "../assets/images/registration.gif";
+import signUpImg from "../assets/images/welcome.gif";
 
 import { Link, useNavigate } from "react-router-dom";
 import { uploadImageToCloudinary } from "../lib/uploadCloudinary";
@@ -9,15 +9,14 @@ import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
 import axios from "axios";
 import defaultImg from "#assets/images/default0.png";
+import { Spinner } from "@material-tailwind/react";
 
 export default function Signup() {
-  const [selectedFile, setSelectedFile] = useState();
-  const [previewURL, setPreviewURL] = useState();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    // profileImgUrl: "",
+
     role: "USER",
   });
 
@@ -28,25 +27,10 @@ export default function Signup() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFileInputChange = async (event) => {
-    const file = event.target.files[0];
-    console.log(file);
-    const data = await uploadImageToCloudinary(file);
-
-    setPreviewURL(data.url);
-    setSelectedFile(data.url);
-    setFormData({ ...formData, profileImgUrl: data.url });
-  };
-
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      // if (!formData.profileImgUrl) {
-      //   const base64 = await convertToBase64(defaultImg);
-      //   setFormData({ ...formData, profileImgUrl: base64 });
-      // }
-
       const res = await axios.post(`${BACKEND_PATH}auth/register`, formData);
       console.log(res);
       if (res.status === 201) {
@@ -63,8 +47,8 @@ export default function Signup() {
   return (
     <section className="px-5 xl:px-0">
       <div className="max-w-[1170px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="hidden lg:block  rounded-l-lg">
+        <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2">
+          <div className="hidden lg:block md:block rounded-l-lg">
             <figure className="rounded-l-lg">
               <img src={signUpImg} alt="" className="w-full rounded-l-lg" />
             </figure>
@@ -133,45 +117,18 @@ export default function Signup() {
                 </label>
               </div>
 
-              {/* <div className="mb-5 flex items-center gap-3">
-                {selectedFile && (
-                  <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center">
-                    <img
-                      src={previewURL}
-                      alt=""
-                      className="rounded-full w-full"
-                    />
-                  </figure>
-                )}
-
-                <div className="relative w-[130px] h-[50px]">
-                  <input
-                    type="file"
-                    name="photo"
-                    id="customFile"
-                    accept=".jpg, .png"
-                    className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
-                    onChange={handleFileInputChange}
-                  />
-
-                  <label
-                    htmlFor="customFile"
-                    className="absolute top-0 left-0 w-full h-full flex items-center px-[0.75rem] py-[0.375rem]
-                  text-[15px] leading-6 overflow-hidden bg-[#0066ff46] text-headingColor font-semibold rounded-lg truncate cursor-pointer"
-                  >
-                    Upload Photo
-                  </label>
-                </div>
-              </div> */}
-
               <div className="mt-7">
                 <button
                   disabled={loading && true}
                   type="submit"
-                  className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg px-4 py-3"
+                  className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg px-4 py-3 "
                 >
                   {loading ? (
-                    <HashLoader size="35" color="#ffffff" />
+                    <HashLoader
+                      size="35"
+                      color="#ffffff"
+                      className="items-center"
+                    />
                   ) : (
                     "Sign Up"
                   )}

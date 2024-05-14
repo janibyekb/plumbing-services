@@ -13,6 +13,9 @@ import { uploadImageToCloudinary } from "#lib/uploadCloudinary.js";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { BACKEND_PATH } from "#lib/utils.js";
+import _ from "lodash";
+
+import defaultImg from "#styles/default.png";
 
 export default function VendorProfile() {
   const { currentUser } = useSelector((state) => state.user);
@@ -62,7 +65,7 @@ export default function VendorProfile() {
               <img
                 onClick={() => fileRef.current.click()}
                 style={{ cursor: "pointer" }}
-                src={currentUser.profileImageUrl}
+                src={currentUser.profileImageUrl || defaultImg}
                 alt=""
                 className="w-full h-full rounded-full"
               />
@@ -78,11 +81,11 @@ export default function VendorProfile() {
           </div>
           <div className="text-center mt-4">
             <h3 className="text-[18px] leading-[30px] text-headingColor font-bold">
-              Janibyek
+              {_.capitalize(currentUser.name)}
             </h3>
 
             <p className="text-textColor text-[15px] leading-6 font-medium">
-              Specialization:
+              Profession:
               <span className="ml-2 text-headingColor text-[17px] leading-8">
                 {currentUser.specialization}
               </span>

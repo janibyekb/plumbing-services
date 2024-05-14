@@ -20,7 +20,7 @@ export default function VendorList() {
         <br />
 
         <div className="container">
-          <div className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mx-auto ">
+          <div className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:mx-32 mx-auto">
             {vendors.map((vendor) => (
               <VendorCard key={vendor._id} vendor={vendor} />
             ))}
