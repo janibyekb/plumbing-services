@@ -18,7 +18,7 @@ export default function Home() {
         <section className="hero__section pt-[60px] 2xl:h-[700px]">
           <div className="container">
             <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
-              {/*========= hero content ========= */}
+              {/*========= hero section ========= */}
               <div>
                 <div className="lg:w-[570px]">
                   <h1 className="text-[36px] leading-[46px] text-headingColor font-[800] md:text-[54px] md:leading-[65px]">
@@ -46,32 +46,8 @@ export default function Home() {
                     </button>{" "}
                   </div>
                 </div>
-
-                <div className="mt-[20px] lg:mt-[50px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px] hidden">
-                  <div>
-                    <h2 className="text-[36px] leading-56[px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
-                      30+
-                    </h2>
-                    <span className="w-[100px] h-2 bg-gray-400 rounded-full block mt-[-14px]"></span>
-                    <p className="text__para"> Daily Clients </p>
-                  </div>
-                  <div>
-                    <h2 className="text-[36px] leading-56[px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
-                      15+
-                    </h2>
-                    <span className="w-[100px] h-2 bg-gray-400 rounded-full block mt-[-14px]"></span>
-                    <p className="text__para"> Service Experts </p>
-                  </div>
-                  <div>
-                    <h2 className="text-[36px] leading-56[px] lg:text-[44px] lg:leading-[54px] font-[700] text-headingColor">
-                      100%
-                    </h2>
-                    <span className="w-[100px] h-2 bg-gray-400 rounded-full block mt-[-14px]"></span>
-                    <p className="text__para"> Client Satisfaction </p>
-                  </div>
-                </div>
               </div>
-              {/*========= hero content ========= */}
+              {/*========= hero section ========= */}
 
               <div className="  xl:w-[650px] ">
                 <img
